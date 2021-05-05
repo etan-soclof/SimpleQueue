@@ -40,7 +40,9 @@ gateway   LoadBalancer   10.8.0.118   23.236.50.63   5000:30865/TCP   77s
 
 In the above example, the application is running at `23.236.50.63:5000`.
 
-Open `23.236.50.63:5000/` in a browser.
+Open `23.236.50.63:5000/` in a browser. Two buttons should be displayed. Press them accordingly.
+
+Note: My implementation allows for the consumer to receive up to two unacknowledged messages at once. Therefore, if two messages are sent successively and the number of tasks in the queue is queried, the amount will be 0. If three messages are sent successively and the number of tasks in the queue is checked, the amount will be 1.
 
 
 
