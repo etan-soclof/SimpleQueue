@@ -13,7 +13,7 @@ This microservice architecture contains three services:
 
 To deploy make a project on GCP (Google Cloud Provider).
 
-Navigate to `provision-gke-cluster/terraform.tfvars`. Replace the values in this terraform.tfvars file with your project_id and region. Terraform will use these values to target your project when provisioning your resources. Your terraform.tfvars file should look like the following.
+Navigate to `terraform-config/provision-gke-cluster/terraform.tfvars`. Replace the values in this terraform.tfvars file with your project_id and region. Terraform will use these values to target your project when provisioning your resources. Your terraform.tfvars file should look like the following.
 ```
 # terraform.tfvars
 project_id = "REPLACE_ME"
@@ -43,9 +43,9 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-#Provision the GKE Cluster
+# Provision the GKE Cluster
 
-Still within the `provision-gke-cluster` directory, run terraform apply and review the planned actions. Your terminal output should indicate the plan is running and what resources will be created.
+Still within the `terraform-config/provision-gke-cluster` directory, run terraform apply and review the planned actions. Your terminal output should indicate the plan is running and what resources will be created.
 
 ```
 $ terraform apply
@@ -66,7 +66,7 @@ This terraform apply will provision a VPC, subnet, GKE Cluster and a GKE node po
 
 This process should take approximately 10 minutes. Upon successful application, your terminal prints the outputs defined in vpc.tf and gke.tf.
 
-#Deploy Microservice Queue via Terraform
+# Deploy Microservice Queue via Terraform
 
 Navigate to the `deploy-queue-kubernetes` directory. From within the directory, run terraform init. Then run terraform apply. Confirm the apply with a yes.
 
@@ -104,7 +104,7 @@ Note: My implementation allows for the consumer to receive up to two unacknowled
 
 From within the `deploy-queue-kubernetes` directory, run `terraform destroy`. Confirm the destroy with a yes. Once this has completed, navigate to the `provision-gke-cluster` directory and run `terraform destroy`. Confirm the destroy with a yes.
 
-#Basic Kubernetes Deployment
+# Basic Kubernetes Deployment via yaml
 
 I have also provided the deployments in the form of a yaml file. This can be deployed on any kuberentes host as follows:
 ```
